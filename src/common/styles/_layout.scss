@@ -1,0 +1,54 @@
+html,
+body {
+  width: 600px;
+	min-height: 600px;
+  margin: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border: 1px solid #e0e0e0;
+}
+
+p {
+  margin: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.container {
+  padding: 0 24px;
+}
+
+.flex {
+  display: flex;
+}
+
+.align-center{
+  align-items: center;
+}
+
+.g8 {
+  gap: 8px;
+}
+
+.g12 {
+  gap: 12px;
+}
+
+.g16 {
+  gap: 16px;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.pt12 {
+  padding-top: 12px;
+}
+
+.pb12 {
+  padding-bottom: 12px;
+}
