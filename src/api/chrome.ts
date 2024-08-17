@@ -1,3 +1,5 @@
+export const currentTab = isExtensionMode() ? ((await getCurrentTab()).id as number) : 0
+
 export async function getCurrentTab() {
   const queryOptions = { active: true, lastFocusedWindow: true };
   const [tab] = await chrome.tabs.query(queryOptions);

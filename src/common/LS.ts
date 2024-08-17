@@ -1,7 +1,6 @@
-import { getCurrentTab, isExtensionMode, runInTab } from "api/chrome"
+import { currentTab, isExtensionMode, runInTab } from "api/chrome"
 
 const getPrefix = () => ""
-const currentTab = isExtensionMode() ? ((await getCurrentTab()).id as number) : 0
 
 const set = async (key: string, val: unknown) => {
   const LSKey = getPrefix() + key
