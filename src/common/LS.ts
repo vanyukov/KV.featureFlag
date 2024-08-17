@@ -1,9 +1,9 @@
-import { getCurrentTab, isExtensionMode, runJS } from "api/chrome"
+import { getCurrentTab, isExtensionMode, runInTab } from "api/chrome"
 
 const getPrefix = () => ""
 const currentTab = isExtensionMode() ? ((await getCurrentTab()).id as number) : 0
 
-const set = (key: string, val: any) => {
+const set = async (key: string, val: unknown) => {
   const LSKey = getPrefix() + key
   let LSVal
   switch (typeof val) {
@@ -23,7 +23,11 @@ const set = (key: string, val: any) => {
       return
   }
   if (isExtensionMode()) {
-    chrome.storage.local.set({ [LSKey]: LSVal })
+    const func = (key: string, val: string) => localStorage.setItem(key, val)
+    const resTab = (await runInTab(currentTab, func, [LSKey, LSVal])) as unknown as string | null
+    if (!Array.isArray(resTab) && resTab?.length === 0) {
+      console.error("LS can't set data from the active tab")
+    }
   } else {
     localStorage.setItem(LSKey, LSVal)
   }
@@ -34,13 +38,14 @@ const get = async (key: string, doParse = true) => {
   let LSVal: string | null
   try {
     if (isExtensionMode()) {
-      // LSVal = await new Promise((resolve, rejects) => {
-      //   chrome.storage.local.get([LSKey], result => {
-      //     resolve(result[LSKey])
-      //   })
-      // })
-      LSVal = (await runJS(currentTab, () => localStorage.getItem(LSKey))) as unknown as string | null
-      console.debug("%c 🚀 -> file: LS.ts:43 -> get -> LSVal:", "background: blue; color: #bada55", LSVal)
+      const func = (key: string) => localStorage.getItem(key)
+      const resTab = (await runInTab(currentTab, func, [LSKey])) as unknown as string | null
+      if (Array.isArray(resTab) && resTab.length > 0) {
+        LSVal = resTab[0].result
+      } else {
+        console.error("LS can't get data from the active tab")
+        LSVal = null
+      }
     } else {
       LSVal = await Promise.resolve(localStorage.getItem(LSKey))
     }
@@ -53,9 +58,13 @@ const get = async (key: string, doParse = true) => {
   }
 }
 
-const remove = (key: string) => {
+const remove = async (key: string) => {
   if (isExtensionMode()) {
-    chrome.storage.local.remove([key])
+    const func = (key: string) => localStorage.removeItem(key)
+    const resTab = (await runInTab(currentTab, func, [key])) as unknown as string | null
+    if (!Array.isArray(resTab) && resTab?.length === 0) {
+      console.error("LS can't remove data from the active tab")
+    }
   } else {
     localStorage.removeItem(key)
   }

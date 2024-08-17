@@ -2,12 +2,11 @@ import { useEffect, useState } from "react"
 import { Button, TableCell, TableRow, TextField } from "ui"
 import AddIcon from "@mui/icons-material/Add"
 import RemoveIcon from "@mui/icons-material/Remove"
-import EditIcon from "@mui/icons-material/Edit"
+import SaveIcon from '@mui/icons-material/Save';
 import ReplayIcon from "@mui/icons-material/Replay"
 import { featuresEditItem, featuresRemoveItem } from "feature/Features"
 import { useAppDispatch } from "store"
 import { TFeature } from "feature/Features"
-import { Value } from "sass"
 
 type TFlagRow = { item: TFeature }
 
@@ -56,7 +55,7 @@ export const FlagRow = ({ item }: TFlagRow) => {
           <RemoveIcon />
         </Button>
         <Button color="secondary" size="small" variant="text" onClick={handlerSave} disabled={!isEdited}>
-          <EditIcon />
+          <SaveIcon />
         </Button>
         <Button color="secondary" size="small" variant="text" onClick={handlerReload}>
           <ReplayIcon />

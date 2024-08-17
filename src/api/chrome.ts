@@ -1,17 +1,17 @@
 export async function getCurrentTab() {
-  let queryOptions = { active: true, lastFocusedWindow: true };
-  let [tab] = await chrome.tabs.query(queryOptions);
+  const queryOptions = { active: true, lastFocusedWindow: true };
+  const [tab] = await chrome.tabs.query(queryOptions);
   return tab;
 }
 
-export function runJS(tabId: number, func: (...args: any[]) => unknown) {
-  // return new Promise((resolve, reject) => {
-  //   chrome.tabs.executeScript(tabId, { code }, resultsArray => resolve(resultsArray[0]))
-  // })
+export function runInTab(tabId: number, func: (...args: never[]) => unknown, args: unknown[]) {
   return chrome.scripting
     .executeScript({
       target : {tabId, allFrames : true},
       func,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      args,
     })
 }
 
