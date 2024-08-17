@@ -7,4 +7,5 @@ export type TFeature = {
   value: string
   defaultValue: string
   status: TFeatureStatus
+  href?: string
 }

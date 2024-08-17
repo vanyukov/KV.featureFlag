@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import { Button, TableCell, TableRow, TextField } from "ui"
+import { Button, Link, TableCell, TableRow, TextField } from "ui"
 import AddIcon from "@mui/icons-material/Add"
 import RemoveIcon from "@mui/icons-material/Remove"
-import SaveIcon from '@mui/icons-material/Save';
+import SaveIcon from "@mui/icons-material/Save"
 import ReplayIcon from "@mui/icons-material/Replay"
 import { featuresEditItem, featuresRemoveItem } from "feature/Features"
 import { useAppDispatch } from "store"
@@ -61,7 +61,14 @@ export const FlagRow = ({ item }: TFlagRow) => {
           <ReplayIcon />
         </Button>
       </TableCell>
-      <TableCell>{editedItem.title}</TableCell>
+      <TableCell>
+        {editedItem.title}{" "}
+        {editedItem.href && (
+          <Link href={"/" + editedItem.href}>
+            <h3>{editedItem.href} page</h3>
+          </Link>
+        )}
+      </TableCell>
       <TableCell>
         <TextField
           multiline
