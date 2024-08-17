@@ -6,7 +6,6 @@ export function Main() {
   return (
     <MainLayout>
       <div className="container">
-        <p>Fearures</p>
         <TableContainer component={Paper}>
           <Table stickyHeader size="small">
             <TableHead>
