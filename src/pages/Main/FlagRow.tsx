@@ -66,7 +66,7 @@ export const FlagRow = ({ item }: TFlagRow) => {
         <TextField
           multiline
           value={editedItem.value}
-          label="ticket"
+          label="value"
           onChange={event => {
             setIsEdited(true)
             setEditedItem({ ...editedItem, value: event.target.value })
