@@ -1,7 +1,7 @@
 html,
 body {
   width: 600px;
-	min-height: 600px;
+  min-height: 600px;
   margin: 0;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,8 +25,12 @@ p {
   display: flex;
 }
 
-.align-center{
+.align-center {
   align-items: center;
+}
+
+.shrink0 {
+  flex-shrink: 0;
 }
 
 .g8 {
