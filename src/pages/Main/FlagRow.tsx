@@ -4,6 +4,7 @@ import AddIcon from "@mui/icons-material/Add"
 import RemoveIcon from "@mui/icons-material/Remove"
 import SaveIcon from "@mui/icons-material/Save"
 import ReplayIcon from "@mui/icons-material/Replay"
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline"
 import { featuresEditItem, featuresRemoveItem } from "feature/Features"
 import { useAppDispatch } from "store"
 import { TFeature } from "feature/Features"
@@ -36,15 +37,15 @@ export const FlagRow = ({ item }: TFlagRow) => {
   return (
     <TableRow>
       <TableCell>
-        <Button
-          color={editedItem.status == "off" ? "primary" : "secondary"}
-          size="small"
-          variant="text"
-          onClick={handlerSave}
-          disabled={editedItem.status == "on"}
-        >
-          <AddIcon />
-        </Button>
+        {editedItem.status == "on" ? (
+          <Button color="success" size="small" variant="text">
+            <CheckCircleOutlineIcon />
+          </Button>
+        ) : (
+          <Button color="primary" size="small" variant="text" onClick={handlerSave}>
+            <AddIcon />
+          </Button>
+        )}
         <Button
           color={editedItem.status == "on" ? "primary" : "secondary"}
           size="small"
