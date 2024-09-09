@@ -1,4 +1,4 @@
-import { Main, NotFound, Sentry } from "pages"
+import { Main, NotFound, Sentry, Wss } from "pages"
 import { createBrowserRouter } from "react-router-dom"
 
 export const router = createBrowserRouter([
@@ -9,6 +9,10 @@ export const router = createBrowserRouter([
   {
     path: "/index.html",
     element: <Main />,
+  },
+  {
+    path: "/wss",
+    element: <Wss />,
   },
   {
     path: "/sentry",

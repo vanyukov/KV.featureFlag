@@ -7,6 +7,7 @@ export const featureList = (): Promise<TFeature[]> => {
       title: "debug:websocket",
       defaultValue: "wss://irm.prod.almara.org/wss",
       doParse: false,
+      href: "wss",
     }),
     getFeature({
       title: "mxm_sentryDns",
