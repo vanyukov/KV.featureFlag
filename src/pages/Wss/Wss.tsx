@@ -34,6 +34,7 @@ export const Wss = () => {
     setWssUrl(`wss://web${stend}_zenitbet.dev.almara.org/wss`)
   }, [stend])
 
+  const preCupisWss = "wss://zenitwin.dev.almara.org/wss"
   return (
     <MainLayout>
       <h1>WSS </h1>
@@ -65,6 +66,29 @@ export const Wss = () => {
             disabled={!stend}
             onClick={() => {
               handlerSave(wssUrl)
+            }}
+          >
+            <PlayArrowIcon />
+          </Button>
+        )}
+      </div>
+      <div className="flex align-center justify-between g8 pt12 ">
+        <p className="pb12">
+          set pre cupis: <strong>{preCupisWss}</strong>
+        </p>
+
+        {featureWss?.status == "on" && featureWss.value == preCupisWss ? (
+          <Button color="primary" size="small" variant="text" onClick={handlerRemove}>
+            <CheckCircleOutlineIcon color="primary" className="w100" />
+          </Button>
+        ) : (
+          <Button
+            color="primary"
+            size="large"
+            variant="contained"
+            disabled={!stend}
+            onClick={() => {
+              handlerSave(preCupisWss)
             }}
           >
             <PlayArrowIcon />

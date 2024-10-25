@@ -29,6 +29,10 @@ p {
   align-items: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .shrink0 {
   flex-shrink: 0;
 }
