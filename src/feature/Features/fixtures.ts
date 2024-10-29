@@ -15,5 +15,10 @@ export const featureList = (): Promise<TFeature[]> => {
       doParse: false,
       href: "sentry",
     }),
+    getFeature({
+      title: "debug:idle_minutes",
+      defaultValue: "1",
+      doParse: false,
+   }),
   ])
 }
