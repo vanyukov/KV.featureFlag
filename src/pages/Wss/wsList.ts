@@ -24,4 +24,9 @@ export const wsList: TWsItem[] = [
     title: "prod Cupis",
     link: "wss://zenit.win/wss",
   },
+  {
+    id: 4,
+    title: "localhost",
+    link: "ws://localhost:3030",
+  },
 ]
