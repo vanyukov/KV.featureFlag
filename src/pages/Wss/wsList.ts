@@ -10,7 +10,7 @@ export const wsList: TWsItem[] = [
     link: "wss://irm.dev.almara.org/wss",
   },
   {
-    id: 2,
+    id: 1,
     title: "irm Prod",
     link: "wss://irm.prod.almara.org/wss",
   },

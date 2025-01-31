@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import PlayArrowIcon from "@mui/icons-material/PlayArrow"
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline"
+import ContentCopyIcon from "@mui/icons-material/ContentCopy"
 import { MainLayout } from "layout"
 import { useAppDispatch } from "store"
 import { featuresEditItem, featuresGetAll, featuresRemoveItem, useFeatureList } from "feature/Features"
-import { Button, TextField } from "ui"
+import { Button, TextField, Tooltip } from "ui"
 import { wsList } from "./wsList"
+import { copyToClipboard } from "common/copyToClipboard"
 
 export const Wss = () => {
   useEffect(() => {
@@ -34,6 +36,7 @@ export const Wss = () => {
   useEffect(() => {
     setWssUrl(`wss://web${stend}_zenitbet.dev.almara.org/wss`)
   }, [stend])
+  const setLsCommand = (url: string) => `localStorage.setItem("debug:websocket", "${url}");`
 
   return (
     <MainLayout>
@@ -71,10 +74,23 @@ export const Wss = () => {
             <PlayArrowIcon />
           </Button>
         )}
+        <Tooltip title={setLsCommand(wssUrl)} placement="left-start">
+          <Button
+            color="secondary"
+            size="large"
+            variant="contained"
+            disabled={!stend}
+            onClick={() => {
+              copyToClipboard(setLsCommand(wssUrl))
+            }}
+          >
+            <ContentCopyIcon />
+          </Button>
+        </Tooltip>
       </div>
       {wsList.map(item => (
         <div className="flex align-center justify-between g8 pt12 " key={item.id}>
-          <p className="pb12">
+          <p className="pb12 w100">
             set {item.title}: <strong>{item.link}</strong>
           </p>
 
@@ -95,6 +111,19 @@ export const Wss = () => {
               <PlayArrowIcon />
             </Button>
           )}
+          <Tooltip title={setLsCommand(item.link)} placement="left-start">
+            <Button
+              color="secondary"
+              size="large"
+              variant="contained"
+              disabled={!stend}
+              onClick={() => {
+                copyToClipboard(setLsCommand(item.link))
+              }}
+            >
+              <ContentCopyIcon />
+            </Button>
+          </Tooltip>
         </div>
       ))}
     </MainLayout>

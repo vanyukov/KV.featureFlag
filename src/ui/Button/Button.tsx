@@ -1,8 +1,11 @@
 import * as MuiButton from "@mui/material/Button"
+import React from "react"
 
 export type ButtonProps = MuiButton.ButtonProps
 
-export function Button({ children, ...props }: ButtonProps) {
-  // eslint-disable-next-line react/jsx-pascal-case
-  return <MuiButton.default variant="contained" {...props}>{children}</MuiButton.default>
-}
+export const Button = React.forwardRef(({ children, ...props }: ButtonProps, ref) => (
+  //@ts-ignore
+  <MuiButton.default variant="contained" ref={ref} {...props}>
+    {children}
+  </MuiButton.default>
+))
