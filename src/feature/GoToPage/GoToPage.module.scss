@@ -1,0 +1,13 @@
+.wrap {
+	display: flex;
+	flex-direction: column;
+	padding: 12px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+.line {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}

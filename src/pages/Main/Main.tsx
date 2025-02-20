@@ -2,6 +2,7 @@ import { MainLayout } from "layout"
 import { Paper, Table, TableCell, TableContainer, TableHead, TableRow } from "ui"
 import { UserId } from "feature/User"
 import { FlagTableBody } from "./FlagTableBody"
+import { GoToPage } from "feature"
 
 export function Main() {
   return (
@@ -19,6 +20,7 @@ export function Main() {
           <FlagTableBody />
         </Table>
       </TableContainer>
+      <GoToPage />
     </MainLayout>
   )
 }

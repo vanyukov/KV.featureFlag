@@ -13,7 +13,7 @@ export const getCookieValue = async (name: string) => {
       if (Array.isArray(resTab) && resTab.length > 0) {
         tabVal = resTab[0].result
       } else {
-        console.error("LS can't get data from the active tab")
+        console.error("can't get cookie from the active tab")
         tabVal = null
       }
     } else {
