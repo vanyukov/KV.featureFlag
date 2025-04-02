@@ -7,5 +7,6 @@ export type TFeature = {
   value: string
   defaultValue: string
   status: TFeatureStatus
+  valueSource: "localStorage" | "cookie"
   href?: string
 }

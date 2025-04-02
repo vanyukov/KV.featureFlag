@@ -24,3 +24,28 @@ export const getCookieValue = async (name: string) => {
     console.error(error)
   }
 }
+
+export const setCookie = async (value: string) => {
+  let tabVal: string | null
+  const func = (value: string) => (document.cookie = value)
+  try {
+    if (isExtensionMode()) {
+      const resTab = (await runInTab(currentTab, func, [value])) as unknown as string | null
+      if (Array.isArray(resTab) && resTab.length > 0) {
+        tabVal = resTab[0].result
+      } else {
+        console.error("can't set cookie from the active tab")
+        tabVal = null
+      }
+    } else {
+      tabVal = await Promise.resolve(func(value) || null)
+    }
+    return tabVal
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const removeCookie = async (value: string) => {
+  setCookie(value+'; expires=Thu, 01-Jan-70 00:00:01 GMT;')
+}
