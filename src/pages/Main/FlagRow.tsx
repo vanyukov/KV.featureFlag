@@ -62,7 +62,7 @@ export const FlagRow = ({ item }: TFlagRow) => {
           <ReplayIcon />
         </Button>
       </TableCell>
-      <TableCell>
+      <TableCell title={editedItem.valueSource}>
         {editedItem.title}{" "}
         {editedItem.href && (
           <Link href={"/" + editedItem.href}>

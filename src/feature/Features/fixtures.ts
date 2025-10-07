@@ -25,6 +25,12 @@ export const featureList = (): Promise<TFeature[]> => {
    }),
     getFeature({
       title: "debug",
+      valueSource: 'localStorage',
+      defaultValue: "pl",
+      doParse: false,
+   }),
+    getFeature({
+      title: "debug",
       valueSource: 'cookie',
       defaultValue: "LOG",
       doParse: false,
