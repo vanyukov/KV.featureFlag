@@ -5,10 +5,16 @@ export const featureList = (): Promise<TFeature[]> => {
   return Promise.all([
     getFeature({
       title: "debug:websocket",
-      defaultValue: "wss://irm.prod.almara.org/wss",
+      defaultValue: "wss://zenit.win/wss",
       valueSource: 'localStorage',
       doParse: false,
       href: "wss",
+    }),
+    getFeature({
+      title: "mxm_feature_flags",
+      defaultValue: "['wc26']",
+      valueSource: 'localStorage',
+      doParse: false,
     }),
     getFeature({
       title: "mxm_sentryDns",
