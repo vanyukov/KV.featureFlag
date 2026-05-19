@@ -31,10 +31,10 @@ export const Wss = () => {
     void dispatch(featuresEditItem({ ...featureWss, status: "on", value: url }))
   }
 
-  const [stend, setStend] = useState(25)
+  const [stend, setStend] = useState(7)
   const [wssUrl, setWssUrl] = useState("")
   useEffect(() => {
-    setWssUrl(`wss://web${stend}_zenitbet.dev.almara.org/wss`)
+    setWssUrl(`wss://web${stend}_zenitwin.dev.almara.org/wss`)
   }, [stend])
   const setLsCommand = (url: string) => `localStorage.setItem("debug:websocket", "${url}");`
 
