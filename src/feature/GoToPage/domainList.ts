@@ -21,7 +21,7 @@ export const domainList: TDomain[] = [
 	},
   {
 		title: 'zenitbet PROD',
-		url: "https://zenitnow532.top",
+		url: "https://zenitnow549.top",
 		haveStandNuber: false
 	},
   {
