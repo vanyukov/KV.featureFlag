@@ -12,7 +12,7 @@ export const featureList = (): Promise<TFeature[]> => {
     }),
     getFeature({
       title: "mxm_feature_flags",
-      defaultValue: '["wc26", "wc26_penalty"]',
+      defaultValue: '["wc26", "wc26_penalty", "wc26_playoff_matches"]',
       valueSource: "localStorage",
       doParse: false,
     }),
